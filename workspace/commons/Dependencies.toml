@@ -12,20 +12,11 @@ org = "ayesh"
 name = "commons"
 version = "0.1.0"
 dependencies = [
-	{org = "ballerina", name = "cloud"},
 	{org = "ballerina", name = "time"},
 	{org = "ballerinai", name = "observe"}
 ]
 modules = [
 	{org = "ayesh", packageName = "commons", moduleName = "commons"}
-]
-
-[[package]]
-org = "ballerina"
-name = "cloud"
-version = "4.0.0"
-modules = [
-	{org = "ballerina", packageName = "cloud", moduleName = "cloud"}
 ]
 
 [[package]]

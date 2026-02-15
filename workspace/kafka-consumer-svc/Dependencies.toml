@@ -12,7 +12,6 @@ org = "ayesh"
 name = "analyticsdb"
 version = "0.1.0"
 dependencies = [
-	{org = "ballerina", name = "cloud"},
 	{org = "ballerina", name = "jballerina.java"},
 	{org = "ballerina", name = "persist"},
 	{org = "ballerina", name = "sql"},
@@ -27,7 +26,6 @@ org = "ayesh"
 name = "commons"
 version = "0.1.0"
 dependencies = [
-	{org = "ballerina", name = "cloud"},
 	{org = "ballerina", name = "time"},
 	{org = "ballerinai", name = "observe"}
 ]
@@ -39,7 +37,6 @@ version = "0.1.0"
 dependencies = [
 	{org = "ayesh", name = "cache_enricher"},
 	{org = "ayesh", name = "stream_processor"},
-	{org = "ballerina", name = "cloud"},
 	{org = "ballerina", name = "http"},
 	{org = "ballerinai", name = "observe"}
 ]
@@ -76,14 +73,6 @@ dependencies = [
 	{org = "ballerina", name = "jballerina.java"},
 	{org = "ballerina", name = "task"},
 	{org = "ballerina", name = "time"}
-]
-
-[[package]]
-org = "ballerina"
-name = "cloud"
-version = "4.0.0"
-modules = [
-	{org = "ballerina", packageName = "cloud", moduleName = "cloud"}
 ]
 
 [[package]]
