@@ -43,3 +43,6 @@ Ballerina.lock
 Config.toml
 
 **/generated
+
+.claude-tasks/
+*.ctx
