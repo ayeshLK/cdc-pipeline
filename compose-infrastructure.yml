@@ -11,6 +11,10 @@ services:
       - --log-bin=mysql-bin
       - --binlog-format=ROW
       - --binlog-row-image=FULL
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
     volumes:
       - ./mysql/source-init:/docker-entrypoint-initdb.d
     networks:
@@ -27,7 +31,11 @@ services:
       - --server-id=112
       - --log-bin=mysql-bin
       - --binlog-format=ROW
-      - --binlog-row-image=FULL      
+      - --binlog-row-image=FULL
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10      
     volumes:
       - ./mysql/sink-init:/docker-entrypoint-initdb.d
     networks:
