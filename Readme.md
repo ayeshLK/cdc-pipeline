@@ -1,4 +1,4 @@
-# CDC Pipeline - Real-time E-commerce Analytics
+# [WSO2 Integrator] CDC Pipeline - Real-time E-commerce Analytics
 
 [![CI](https://github.com/ayeshLK/cdc-pipeline/workflows/CI/badge.svg)](https://github.com/ayeshLK/cdc-pipeline/actions)
 
