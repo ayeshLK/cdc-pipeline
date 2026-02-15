@@ -1,0 +1,4 @@
+[container.image]
+repository = "ayeshalmeida"
+name = "dataingestionsvc"
+tag = "0.1.0"

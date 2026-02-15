@@ -1,0 +1,28 @@
+CREATE TABLE ecommerce_db.orders (
+    order_id BIGINT PRIMARY KEY,
+    customer_id BIGINT NOT NULL,
+    merchant_id BIGINT NOT NULL,
+    order_status VARCHAR(20) NOT NULL,
+    order_time DATETIME NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE ecommerce_db.order_items (
+    order_item_id BIGINT PRIMARY KEY,
+    order_id BIGINT NOT NULL,
+    product_id BIGINT NOT NULL,
+    quantity INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE ecommerce_db.products (
+    product_id BIGINT PRIMARY KEY,
+    merchant_id BIGINT NOT NULL,
+    category VARCHAR(100) NOT NULL,
+    name VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

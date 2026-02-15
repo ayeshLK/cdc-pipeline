@@ -1,0 +1,4 @@
+[container.image]
+repository = "ayeshalmeida"
+name = "analyticsapi"
+tag = "0.1.0"
