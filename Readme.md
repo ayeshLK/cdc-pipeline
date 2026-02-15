@@ -6,7 +6,7 @@ A real-time analytics pipeline using Change Data Capture (CDC) to process e-comm
 
 ## Architecture Overview
 
-<img src="_resources/component-diagram-2.png" alt="Component Diagram" width='750'/>
+<img src="_resources/component-diagram.png" alt="Component Diagram" width='750'/>
 
 ### System Components
 
