@@ -8,6 +8,10 @@ A real-time analytics pipeline using Change Data Capture (CDC) to process e-comm
 
 <img src="_resources/component-diagram.png" alt="Component Diagram" width='750'/>
 
+Following the Ballerina service consolidation, the diagram below illustrates the final consolidated system components.
+
+<img src="_resources/consolidated-services.png" alt="Component Diagram" width='750'/>
+
 ### System Components
 
 **Infrastructure Layer:**
