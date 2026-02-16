@@ -1,0 +1,32 @@
+name: CD flow - Data Ingestion service
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  build:
+    name: Build Ballerina Workspace
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Ballerina
+        uses: ballerina-platform/setup-ballerina@v1.1.0
+        with:
+          version: 2201.13.1
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build sources
+        working-directory: workspace/data-ingestion-svc
+        run: bal build --cloud=docker
+
+      - name: Push docker image
+        run: |
+          docker push ayeshalmeida/dataingestionsvc:${{ github.sha }}
