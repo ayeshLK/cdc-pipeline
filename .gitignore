@@ -41,6 +41,8 @@ Ballerina.lock
 
 #Ballerina
 Config.toml
+# Allow Config.toml in helm directory (these are templates)
+!helm/**/Config.toml
 
 **/generated
 

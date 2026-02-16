@@ -1,0 +1,40 @@
+# Cache enricher configurations
+[cache_enricher.kafka]
+bootstrapServers = "{{ .Values.deployment.config.cache_enricher.kafka.bootstrapServers }}"
+deadLetterTopic = "{{ .Values.deployment.config.cache_enricher.kafka.deadLetterTopic }}"
+
+[cache_enricher.redis]
+host = "{{ .Values.deployment.config.cache_enricher.redis.host }}"
+port = {{ .Values.deployment.config.cache_enricher.redis.port }}
+cacheExpiryInterval = {{ .Values.deployment.config.cache_enricher.redis.cacheExpiryInterval }}
+
+[cache_enricher]
+livenessInterval = {{ .Values.deployment.config.cache_enricher.livenessInterval }}
+
+# Stream processor configurations
+[stream_processor.kafka]
+bootstrapServers = "{{ .Values.deployment.config.stream_processor.kafka.bootstrapServers }}"
+deadLetterItemsTopic = "{{ .Values.deployment.config.stream_processor.kafka.deadLetterItemsTopic }}"
+deadLetterAnalysisTopic = "{{ .Values.deployment.config.stream_processor.kafka.deadLetterAnalysisTopic }}"
+
+[stream_processor.redis]
+host = "{{ .Values.deployment.config.stream_processor.redis.host }}"
+port = {{ .Values.deployment.config.stream_processor.redis.port }}
+cacheExpiryInterval = {{ .Values.deployment.config.stream_processor.redis.cacheExpiryInterval }}
+
+[stream_processor]
+livenessInterval = {{ .Values.deployment.config.stream_processor.livenessInterval }}
+
+[analyticsdb]
+host = "{{ .Values.deployment.config.analyticsdb.host }}"
+port = {{ .Values.deployment.config.analyticsdb.port }}
+user = "{{ .Values.deployment.config.analyticsdb.user }}"
+password = "{{ .Values.deployment.config.analyticsdb.password }}"
+database = "{{ .Values.deployment.config.analyticsdb.database }}"
+
+# HTTP configurations
+[ballerina.http]
+defaultListenerPort = {{ .Values.deployment.config.server.port }}
+
+[ballerina.log]
+level = "{{ .Values.deployment.config.logging.level }}"

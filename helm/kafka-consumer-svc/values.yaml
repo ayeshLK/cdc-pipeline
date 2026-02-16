@@ -1,0 +1,36 @@
+deployment:
+  replicas: 1
+  image:
+    repository: "ayeshalmeida/kafkaconsumersvc"
+    pullPolicy: IfNotPresent
+    tag: "0.1.0"
+  config:
+    server:
+      port: 19092
+    cache_enricher:
+      kafka:
+        bootstrapServers: "kafka:9092"
+        deadLetterTopic: "dl-meta_info"
+      redis:
+        host: "redis-standalone"
+        port: 6379
+        cacheExpiryInterval: 3600
+      livenessInterval: 90.0
+    stream_processor:
+      kafka:
+        bootstrapServers: "kafka:9092"
+        deadLetterItemsTopic: "dl-order_items"
+        deadLetterAnalysisTopic: "dl-sales_analysis"
+      redis:
+        host: "redis-standalone"
+        port: 6379
+        cacheExpiryInterval: 3600
+      livenessInterval: 90.0
+    analyticsdb:
+      host: "mysql-sink"
+      port: 3307
+      user: "root"
+      password: "root"
+      database: "analytics_db"
+    logging:
+      level: "INFO"
