@@ -69,16 +69,18 @@ service on kafkaListener {
 }
 
 isolated function createEnrichedItem(commons:OrderItem itm) returns EnrichedOrderItem|error? {
-    commons:Order? 'order = check retrieveCachedOrder(itm.order_id);
-    if 'order is () {
-        log:printWarn("Could not find the order for the order-item from the cache, hence pushing the event to the dead-letter topic", itm = itm);
+    commons:Order|error? 'order = retrieveCachedOrder(itm.order_id);
+    if 'order is () || 'order is error {
+        commons:logWarnOrError("Could not find the order for the order-item from the cache, hence pushing the event to the dead-letter topic",
+                'error = 'order, itm = itm);
         check pushOrderItemToDLQ(itm);
         return;
     }
 
-    commons:Product? product = check retrieveProduct(itm.product_id);
-    if product is () {
-        log:printWarn("Could not find the relevant product for the order-item from the cache, hence pushing the event to the dead-letter topic", itm = itm);
+    commons:Product|error? product = retrieveProduct(itm.product_id);
+    if product is () || product is error {
+        commons:logWarnOrError("Could not find the relevant product for the order-item from the cache, hence pushing the event to the dead-letter topic",
+                'error = 'product, itm = itm);
         check pushOrderItemToDLQ(itm);
         return;
     }
@@ -116,9 +118,8 @@ isolated function updateAnalyticsDb(commons:AggregatedSales[] sales) returns err
     foreach var itm in sales {
         error? result = insertSalesData(itm);
         if result is error {
-            log:printError(
-                    "Error occurred while persisting analytics data, hence pushing the event to the dead-letter topic",
-                    itm = itm, 'error = result);
+            commons:logWarnOrError("Error occurred while persisting analytics data, hence pushing the event to the dead-letter topic",
+                    'error = result, itm = itm);
             check pushAggregatedSalesToDLQ(itm);
         }
     }

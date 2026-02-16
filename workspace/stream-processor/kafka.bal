@@ -1,4 +1,5 @@
 import ballerinax/kafka;
+
 import ayesh/commons;
 
 final kafka:Producer producer = check new (kafka.bootstrapServers, acks = "all");

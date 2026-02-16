@@ -26,6 +26,7 @@ org = "ayesh"
 name = "commons"
 version = "0.1.0"
 dependencies = [
+	{org = "ballerina", name = "log"},
 	{org = "ballerina", name = "time"},
 	{org = "ballerinai", name = "observe"}
 ]

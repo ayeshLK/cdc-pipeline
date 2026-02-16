@@ -1,4 +1,3 @@
-import ballerina/log;
 import ballerinax/kafka;
 
 import ayesh/commons;
@@ -37,8 +36,11 @@ isolated function updateCache(commons:Order|commons:Product entry) returns error
         cachingResult = cacheProduct(entry);
     }
 
-    if cachingResult is error {
-        log:printWarn("Error occurred while caching entry, hence pushing the event to the dead-letter topic", itm = entry);
-        check produceDeadLetterMsg(entry);
+    if cachingResult is () {
+        return;
     }
+
+    commons:logWarnOrError("Error occurred while caching entry, hence pushing the event to the dead-letter topic",
+            'error = cachingResult, itm = entry);
+    check produceDeadLetterMsg(entry);
 }
