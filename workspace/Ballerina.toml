@@ -1,2 +1,11 @@
 [workspace]
-packages = ["data_ingestion", "cache_enricher", "commons", "stream_processor", "analyticsdb", "analytics_api", "data_ingestion_svc", "kafka_consumer_svc"]
+packages = [
+    "analytics_api", 
+    "analyticsdb", 
+    "cache_enricher", 
+    "commons", 
+    "data_ingestion", 
+    "data_ingestion_svc",
+    "kafka_consumer_svc",
+    "stream_processor"
+]
