@@ -50,9 +50,9 @@ cdc-pipeline/
 │   ├── cache-enricher/          # Redis caching module
 │   ├── stream-processor/        # Event processing and aggregation module
 │   ├── analytics-db/            # Database persistence layer
-│   ├── analytics-api/           # REST API module
-│   ├── data-ingestion-svc/     # Service wrapper for data-ingestion
-│   ├── kafka-consumer-svc/     # Consolidated service (cache-enricher + stream-processor)
+│   ├── analytics_api/           # REST API module
+│   ├── data_ingestion_svc/     # Consolidated service wrapper for data-ingestion
+│   ├── kafka_consumer_svc/     # Consolidated service (cache-enricher + stream-processor)
 │   └── Ballerina.toml          # Workspace configuration
 ├── mysql/
 │   ├── source-init/            # Source database initialization scripts
@@ -115,7 +115,7 @@ Start the services **in the following order**:
 Captures CDC events from MySQL and publishes to Kafka:
 
 ```bash
-cd workspace/data-ingestion-svc
+cd workspace/data_ingestion_svc
 bal run
 ```
 
@@ -126,7 +126,7 @@ bal run
 Runs both cache enricher and stream processor:
 
 ```bash
-cd workspace/kafka-consumer-svc
+cd workspace/kafka_consumer_svc
 bal run
 ```
 
@@ -139,7 +139,7 @@ bal run
 Exposes REST endpoints for querying analytics:
 
 ```bash
-cd workspace/analytics-api
+cd workspace/analytics_api
 bal run
 ```
 
