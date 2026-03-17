@@ -1,4 +1,5 @@
-// todo: add proper implementation
+import ballerinax/cdc;
+
 public isolated function isLive() returns boolean|error {
-    return true;
+    return cdc:isLive(dbListener);
 }
