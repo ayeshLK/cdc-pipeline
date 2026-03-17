@@ -25,17 +25,17 @@ Following the Ballerina service consolidation, the diagram below illustrates the
 - **Redis** (port 6379) - Cache layer for data enrichment
 
 **Application Services:**
-1. **data-ingestion-svc** (port 19091)
+1. **data_ingestion_-_svc** (port 19091)
    - Captures CDC events from MySQL binlog
    - Publishes changes to Kafka topics: `cdc-products`, `cdc-orders`, `cdc-order_items`
    - Uses Ballerina CDC connector with Debezium
 
-2. **kafka-consumer-svc** (port 19092)
+2. **kafka_consumer_svc** (port 19092)
    - **Cache Enricher**: Consumes product and order events, populates Redis cache
    - **Stream Processor**: Consumes order items, enriches with cached data, computes aggregates
    - Writes aggregated sales data to analytics database
 
-3. **analytics-api** (port 9090)
+3. **analytics_api** (port 9090)
    - REST API to query aggregated sales analytics
    - Endpoints: `/analytics/merchant/{id}`, `/analytics/category/{name}`
 
