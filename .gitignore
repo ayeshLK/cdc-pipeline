@@ -48,3 +48,6 @@ Config.toml
 
 .claude-tasks/
 *.ctx
+
+# DB logs related
+*.dat
