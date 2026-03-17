@@ -1,0 +1,17 @@
+# Data ingestion svc configurations
+[data_ingestion.db]
+hostname = "localhost"
+port = 3306
+username = "debezium"
+password = "dbz"
+
+[data_ingestion.kafka]
+bootstrapServers = "localhost:9092"
+topicPrefix = "cdc"
+
+# HTTP configurations
+[ballerina.http]
+defaultListenerPort = 19091
+
+[ballerina.log]
+level = "DEBUG"
