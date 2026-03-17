@@ -1,9 +1,9 @@
 [package]
 org = "ayesh"
-name = "commons"
+name = "stream_processor"
 version = "0.1.0"
 distribution = "2201.13.1"
-title = "Common utilities and types"
+title = "Stream processing service"
 
 [build-options]
 observabilityIncluded = true

@@ -25,17 +25,17 @@ Following the Ballerina service consolidation, the diagram below illustrates the
 - **Redis** (port 6379) - Cache layer for data enrichment
 
 **Application Services:**
-1. **data-ingestion-svc** (port 19091)
+1. **data_ingestion_-_svc** (port 19091)
    - Captures CDC events from MySQL binlog
    - Publishes changes to Kafka topics: `cdc-products`, `cdc-orders`, `cdc-order_items`
    - Uses Ballerina CDC connector with Debezium
 
-2. **kafka-consumer-svc** (port 19092)
+2. **kafka_consumer_svc** (port 19092)
    - **Cache Enricher**: Consumes product and order events, populates Redis cache
    - **Stream Processor**: Consumes order items, enriches with cached data, computes aggregates
    - Writes aggregated sales data to analytics database
 
-3. **analytics-api** (port 9090)
+3. **analytics_api** (port 9090)
    - REST API to query aggregated sales analytics
    - Endpoints: `/analytics/merchant/{id}`, `/analytics/category/{name}`
 
@@ -50,9 +50,9 @@ cdc-pipeline/
 │   ├── cache-enricher/          # Redis caching module
 │   ├── stream-processor/        # Event processing and aggregation module
 │   ├── analytics-db/            # Database persistence layer
-│   ├── analytics-api/           # REST API module
-│   ├── data-ingestion-svc/     # Service wrapper for data-ingestion
-│   ├── kafka-consumer-svc/     # Consolidated service (cache-enricher + stream-processor)
+│   ├── analytics_api/           # REST API module
+│   ├── data_ingestion_svc/     # Consolidated service wrapper for data-ingestion
+│   ├── kafka_consumer_svc/     # Consolidated service (cache-enricher + stream-processor)
 │   └── Ballerina.toml          # Workspace configuration
 ├── mysql/
 │   ├── source-init/            # Source database initialization scripts
@@ -115,7 +115,7 @@ Start the services **in the following order**:
 Captures CDC events from MySQL and publishes to Kafka:
 
 ```bash
-cd workspace/data-ingestion-svc
+cd workspace/data_ingestion_svc
 bal run
 ```
 
@@ -126,7 +126,7 @@ bal run
 Runs both cache enricher and stream processor:
 
 ```bash
-cd workspace/kafka-consumer-svc
+cd workspace/kafka_consumer_svc
 bal run
 ```
 
@@ -139,7 +139,7 @@ bal run
 Exposes REST endpoints for querying analytics:
 
 ```bash
-cd workspace/analytics-api
+cd workspace/analytics_api
 bal run
 ```
 

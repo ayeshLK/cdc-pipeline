@@ -1,0 +1,19 @@
+[stream_processor.kafka]
+bootstrapServers = "localhost:9092"
+deadLetterItemsTopic = "dl-order_items"
+deadLetterAnalysisTopic = "dl-sales_analysis"
+
+[stream_processor.redis]
+host = "localhost"
+port = 6379
+cacheExpiryInterval = 3600
+
+[stream_processor]
+livenessInterval = 60.0
+
+[analyticsdb]
+host = "localhost"
+port = 3307
+user = "root"
+password = "root"
+database = "analytics_db"

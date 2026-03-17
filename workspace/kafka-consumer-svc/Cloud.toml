@@ -1,4 +1,0 @@
-[container.image]
-repository = "ayeshalmeida"
-name = "kafkaconsumersvc"
-tag = "0.1.0"
